@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -9,15 +10,14 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #fafbfa;
+    background-color: #fafbfa; 
+    font-family: Arial, sans-serif; 
+    color: #333; 
 }
 
 #mainContainer {
-    width: 98vw;
-    height: 95vh;
-   
-    
-    background-color:#eff0f8;
+
+    background-color: #fafafa; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,10 +28,10 @@ body {
 #subContainer {
     padding: 20px;
     margin: 20px;
-    border: 2px solid rgb(79, 92, 86);
-    background-color: #A0937D;
+    border: 2px solid #4f5c56; 
+    background-color: #8baaba; 
     border-radius: 20px;
-    height: 80vh;
+    height: 60vh;
     width: 100%;
 }
 
@@ -41,42 +41,56 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    background-color: #FFF078;
-    height: 70vh;
+    background-color: #fff078;
+    height: 50vh;
     margin: 10px 0;
-    border: 2px solid rgb(63, 87, 85);
+    border: 2px solid #3f5755; 
 }
 
 #divContainer div {
     height: 10%;
-    border: 2px solid rgb(92, 87, 63);
-    width: 90vw;
+    border: 2px solid #5c573f; 
+    border-radius: 20px;
+    width: 70vw;
     margin: 10px 0;
-    padding: 10px;
-}
-
-#nevDiv {
-    border: 2px solid rgb(176, 167, 67);
-    border-radius: 20px;   
-    margin: 5px; 
-    width: 80vw;
-    text-align: center;
-    padding: 10px;
-    color: #fafbfa;
-    background: #468585;
-    
+    padding: 20px;
 }
 
 #addBtn {
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #45474B;
+    background-color: #40565c; 
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 20px;
+    width: 80vw;
+    height: 6vh;
 }
 
 #addBtn:hover {
-    background-color: #344460;
+    background-color: #344460; 
+    
+}
+
+#colorPalette {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin-bottom: 20px;
+}
+
+.color {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#colorTarget {
+    width: 700px;
+    height: 80px;
+    margin: 20px;
+    border: 2px solid #595454;
+    border-radius: 20px;
 }

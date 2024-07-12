@@ -15,3 +15,19 @@ function addElement() {
   const divContainer = document.getElementById("divContainer");
   divContainer.appendChild(newDiv);
 }
+
+
+const pickedColor = document.querySelectorAll('.color')
+
+pickedColor.forEach(pickedColor=>{
+  
+  pickedColor.addEventListener('click', function(){
+
+  const selectedColor = this.style.backgroundColor;
+
+  const targetColor = document.getElementById('colorTarget')
+
+  targetColor.style.backgroundColor = selectedColor;
+
+  })
+})
