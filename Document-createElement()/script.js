@@ -1,33 +1,34 @@
+$(document).ready(function () {
 
-document.getElementById("addBtn").onclick = addElement;
+  const picedColor = $(".color");
+  let selectedColor = "";
 
-function addElement() {
-  // create a new div element
-  const newDiv = document.createElement("div");
+  picedColor.on("click", function () {
 
-  // and give it some content
-  const newContent = document.createTextNode("Hi there and greetings!");
+    selectedColor = $(this).css("background-color");
+    $("#colorTarget").css("background-color", selectedColor);
 
-  // add the text node to the newly created div
-  newDiv.appendChild(newContent);
-
-  // add the newly created element into the divContainer
-  const divContainer = document.getElementById("divContainer");
-  divContainer.appendChild(newDiv);
-}
+  });
 
 
-const pickedColor = document.querySelectorAll('.color')
+  function addElement() {
 
-pickedColor.forEach(pickedColor=>{
+    const newDiv = $("<div></div>");
+    newDiv.addClass("newDiv");
+
+    const newContent = $("<span>New Content</span>");
+    newDiv.append(newContent);
+
+    newDiv.on("click", function () {
+
+      $(this).css("background-color", $("#colorTarget").css("background-color") );
+
+    });
+
+    $("#divContainer").append(newDiv);
+
+  }
+
+  $("#addBtn").on("click", addElement);
   
-  pickedColor.addEventListener('click', function(){
-
-  const selectedColor = this.style.backgroundColor;
-
-  const targetColor = document.getElementById('colorTarget')
-
-  targetColor.style.backgroundColor = selectedColor;
-
-  })
-})
+});
