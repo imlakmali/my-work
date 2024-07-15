@@ -1,9 +1,9 @@
+
+let selectedColor = "";
+
 $(document).ready(function () {
 
-  const picedColor = $(".color");
-  let selectedColor = "";
-
-  picedColor.on("click", function () {
+ $(".color").on('click', function () {
 
     selectedColor = $(this).css("background-color");
     $("#colorTarget").css("background-color", selectedColor);
@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     newDiv.on("click", function () {
 
-      $(this).css("background-color", $("#colorTarget").css("background-color") );
+      $(this).css("background-color", selectedColor );
 
     });
 
