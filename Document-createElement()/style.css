@@ -56,7 +56,7 @@ body {
     padding: 20px;
 }
 
-#addBtn {
+#addBtn, #removeBtn {
     margin-top: 10px;
     padding: 10px 20px;
     background-color: #40565c; 
@@ -69,6 +69,10 @@ body {
 }
 
 #addBtn:hover {
+    background-color: #344460; 
+    
+}
+#removeBtn:hover {
     background-color: #344460; 
     
 }
