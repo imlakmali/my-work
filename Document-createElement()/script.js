@@ -2,14 +2,15 @@ let selectedColor = "";
 
 
 $(document).ready(function () {
-
+ 
   $(".color").on("click", function () {
 
     selectedColor = $(this).css("background-color");
     $("#colorTarget").css("background-color", selectedColor);
 
   });
-
+  
+  
 
   function addElement() {
 
@@ -19,12 +20,30 @@ $(document).ready(function () {
     const newContent = $("<span>New Content</span>");
     newDiv.append(newContent);
 
-    newDiv.on("click", function () {
+    newDiv.on("click", function (evnt) {
 
-      $(".newDiv").css("border-width", "1px");
-      $(this).css("border-width", "5px");
-      $(this).css("background-color", selectedColor);
+      if(evnt.ctrlKey){
 
+        const currntBorderwidth = parseInt($(this).css("border-width"));
+
+        if(currntBorderwidth >1){
+
+          $(this).css("border-width", "1px");
+          $(this).css("background-color", "");
+
+        }else{
+
+          $(this).css("border-width", "5px");
+          $(this).css("background-color", selectedColor);
+        }
+      }else{
+
+        $(".newDiv").css("border-width", "1px").css("background-color", "");
+        $(this).css("border-width", "5px").css("background-color", selectedColor);
+
+      }
+     
+      
     });
 
 
