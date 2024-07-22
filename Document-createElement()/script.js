@@ -1,114 +1,115 @@
 $(document).ready(function () {
 
-      let selectedColor = "";
-      let element = [];
+  let selectedColor = ""; 
+  let elements = []; 
 
+
+  // Event listener for color selection
   $(".color").on("click", function () {
 
-      selectedColor = $(this).css("background-color");
-      updateColor();
+    selectedColor = $(this).css("background-color"); 
+    updateColor(); 
 
   });
 
+
+  // Event listener for adding a new element
   $("#addBtn").on("click", function () {
-
-      addElement();
-      uiSection();
-
+    addElement(); 
+    renderElements(); 
   });
 
+  
+  // Event listener for removing selected elements
   $("#removeBtn").on("click", function () {
-
-      removeSelectedDiv();
-      uiSection();
-
+    removeSelectedElements(); 
+    renderElements(); 
   });
 
+
+  // Function to update the color target with the selected color
   function updateColor() {
-
-       $("#colorTarget").css("background-color", selectedColor);
-
+    $("#colorTarget").css("background-color", selectedColor); 
   }
 
+
+  // Function to add a new element
   function addElement() {
-
-      const newElement = {
-        content: "new content",
-        borderWidth: 1,
-        backgroundColor: "",
+    const newElement = {
+      content: "new content", 
+      borderWidth: 1,
+      backgroundColor: ""
     };
-        element.push(newElement);
-
+    elements.push(newElement); 
   }
+  
 
-  function toggleElementSection(indx, isctrlPressed) {
+  // Function to toggle the selection state of an element
+  function toggleElementSelection(index, isCtrlPressed) {
+    if (isCtrlPressed) {
 
-      if (isctrlPressed) {
+      // If Ctrl key is pressed, toggle the selection state
+      if (elements[index].borderWidth > 1) {
 
-        if (element[indx].borderWidth > 1) {
+        elements[index].borderWidth = 1; 
+        elements[index].backgroundColor = ""; 
+      } else {
 
-          element[indx].borderWidth = 1;
-          element[indx].backgroundColor = "";
-
-        } else {
-
-          element[indx].borderWidth = 5;
-          element[indx].backgroundColor = selectedColor;
-
+        elements[index].borderWidth = 5; 
+        elements[index].backgroundColor = selectedColor; 
       }
     } else {
 
-        element.forEach((el, i) => {
+      // If Ctrl key is not pressed, select only the clicked element
+      elements.forEach((el, i) => {
 
-          if (i == indx) {
-            el.borderWidth = 5;
-            el.backgroundColor = selectedColor;
+        if (i == index) {
+          el.borderWidth = 5; 
+          el.backgroundColor = selectedColor; 
+        } else {
 
-          } else {
-
-            el.borderWidth = 1;
-            el.backgroundColor = "";
-
+          el.borderWidth = 1; 
+          el.backgroundColor = ""; 
         }
-
       });
-
     }
-
   }
 
-  function removeSelectedDiv() {
 
-    element = element.filter(function (el) {
-      return el.borderWidth <= 1;
+  // Function to remove selected elements
+  function removeSelectedElements() {
+
+    elements = elements.filter(function (el) {
+      return el.borderWidth <= 1; 
 
     });
   }
 
-  function uiSection() {
 
-    $("#divContainer").empty();
-    element.forEach((el, indx) => {
+  // Function to render elements on the UI
+  function renderElements() {
+
+    $("#divContainer").empty(); 
+    elements.forEach((el, index) => {
 
       const newDiv = $("<div></div>");
-      newDiv.addClass("newDiv");
+      newDiv.addClass("newDiv"); 
 
       newDiv.css("border-width", el.borderWidth + "px");
-      newDiv.css("background-color", el.backgroundColor);
+      newDiv.css("background-color", el.backgroundColor); 
 
       const newContent = $("<span>New Content</span>");
-      newDiv.append(newContent);
+      newDiv.append(newContent); 
 
-      newDiv.on("click", function (evnt) {
 
-        toggleElementSection(indx, evnt.ctrlKey);
-        uiSection();
-
+      // Event listener for toggling element selection
+      newDiv.on("click", function (event) {
+        toggleElementSelection(index, event.ctrlKey); 
+        renderElements(); 
       });
 
-      $("#divContainer").append(newDiv);
-      
+      $("#divContainer").append(newDiv); 
     });
-
   }
+
 });
