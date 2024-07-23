@@ -4,6 +4,22 @@ $(document).ready(function () {
   let elements = []; 
   let nextId = 1; 
 
+
+
+    // Function to add a new div element
+    function addElement() {
+      
+      const newElement = {
+          id: nextId++, 
+          status: 'inactive', 
+          content: "New Content", 
+          borderWidth: 1,
+          backgroundColor: ""
+      };
+      elements.push(newElement);
+  }
+
+
   // Function to create div elements on the front page
   function createDivElements() {
 
@@ -17,33 +33,24 @@ $(document).ready(function () {
           newDiv.css("border-width", el.borderWidth + "px");
           newDiv.css("background-color", el.backgroundColor);
 
-          const newContent = $("<span>" + el.content + "</span>");
+          const newContent = $("<span>" + "Div ID:"+el.id + "</span>");
           newDiv.append(newContent);
 
           // Event listener for toggling element selection
           newDiv.on("click", function (event) {
               let id = $(this).attr("data-id");
-              console.log("--div Id", id);
-              console.log("elements",elements)
               toggleElementSelection(parseInt(id), event.ctrlKey);
               updateDivElements(); 
+              console.log("--div Id", id);
+              console.log("elements",elements)
+              console.log(el.status)
           });
 
           $("#divContainer").append(newDiv);
       });
   }
 
-  // Function to add a new div element
-  function addElement() {
-      const newElement = {
-          id: nextId++, 
-          status: 'inactive', 
-          content: "New Content", 
-          borderWidth: 1,
-          backgroundColor: ""
-      };
-      elements.push(newElement);
-  }
+
 
   // Function to update the div elements based on the current state
   function updateDivElements() {
