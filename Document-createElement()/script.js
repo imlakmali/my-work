@@ -33,17 +33,17 @@ $(document).ready(function () {
           newDiv.css("border-width", el.borderWidth + "px");
           newDiv.css("background-color", el.backgroundColor);
 
-          const newContent = $("<span>" + "Div ID:"+el.id + "</span>");
-          newDiv.append(newContent);
+        
+          newDiv.append("Div ID:"+el.id );
 
           // Event listener for toggling element selection
           newDiv.on("click", function (event) {
+
+            // console.log("-----",event)
               let id = $(this).attr("data-id");
               toggleElementSelection(parseInt(id), event.ctrlKey);
               updateDivElements(); 
-              console.log("--div Id", id);
-              console.log("elements",elements)
-              console.log(el.status)
+              
           });
 
           $("#divContainer").append(newDiv);
