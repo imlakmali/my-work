@@ -42,3 +42,21 @@
     font-size: 14px;
     color: #333;
 }
+.new-div {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 5px;
+    border-color: #140f44; /* Ensure border color is always applied */
+}
+
+.border-1 {
+    border-width: 1px;
+}
+
+.border-5 {
+    border-width: 5px;
+}
+
+.border-10 {
+    border-width: 10px;
+}

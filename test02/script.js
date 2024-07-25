@@ -7,7 +7,7 @@ $(document).ready(function(){
     // Event listener for add button.
      $("#addButton").click(function(){
 
-        const newElement = addElement();   //create new element and add it in to the array.
+        const newElement = addElement();  
         createNewDivElement(newElement); 
         
     });
@@ -34,37 +34,62 @@ function addElement(){
 //  create new div element in the DOM
 function createNewDivElement(element){
 
-    $("<div></div>")
+   const newDiv =  $("<div></div>")
    .addClass("new-div")
    .attr("data-id", element.id)
    .css("border",`${element.borderThickness}px solid #140f44` )
    .text(`Div ID: ${element.id}`)
-   .appendTo("#divContainer")
-   .click(function(){
+   .appendTo("#divContainer");
 
-       updateDivStatus(element.id);
+   newDiv.click(function(event){
+       
+       updateDivStatus(element.id, event.ctrlKey);
 
-   })
+   });
 }
 
 
-// update the status of s div element
-function updateDivStatus(id){
+// Update the status of a div element
+function updateDivStatus(id, isCtrlPressed) {
 
-const element = elements.find(e=> e.id === id);
-if(element){
+    elements.forEach((element) => {
 
-    element.active = !element.active;
+        if (isCtrlPressed) {
+            // If Ctrl key is pressed
+            if (element.id === id) {
 
-    let borderThickness;
-    if(element.active){
-        borderThickness = 10;
-    }else{
-        borderThickness=1;
-    }
-    $(`div[data-id="${id}"]`).css("border-width", `${borderThickness}px`);
-    console.log(elements)
-    
+                if (element.borderThickness > 1) {
+                    element.borderThickness = 1;
+                    element.active = false;
+                } else {
+                    element.borderThickness = 10;
+                    element.active = true;
+                }
+            }
+        } else {
+
+            // If Ctrl key is not pressed
+            if (element.id === id) {
+                element.borderThickness = 10;
+                element.active = true;
+            } else {
+
+                element.borderThickness = 1;
+                element.active = false;
+            }
+        }
+    });
+
+    updateDivElements();
 }
+
+// Update div elements' styles
+function updateDivElements() {
+
+    elements.forEach(function(element) {
+
+        $(`div[data-id="${element.id}"]`).css('border-width', `${element.borderThickness}px`);
+
+    });
 }
-    
+

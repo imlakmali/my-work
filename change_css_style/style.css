@@ -1,0 +1,37 @@
+.divContainer{
+    border: 1px solid black;
+    background-color: #140f44;
+}
+
+.new-div {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 5px;
+    border-style: solid;
+    border-color: #140f44; 
+}
+
+.border-1 {
+    border: 1px solid black;
+    margin: 1px;
+}
+.border-2 {
+    border: 2px solid black;
+    margin: 2px;
+}
+.border-3 {
+    border: 3px solid black;
+    margin: 3px;
+}
+
+
+.border-5 {
+    border: 5px solid black;
+    margin: 5px;
+}
+
+.border-10 {
+    border: 10px solid black;
+    margin: 10px;
+    
+}
