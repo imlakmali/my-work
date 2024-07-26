@@ -1,16 +1,25 @@
 let idCounter = 0;
 const elements = [];
+let selectedColor= "";
 
 
 $(document).ready(function () {
 
-  // Event listener for add button.
-  $("#addButton").click(function () {
+    // Event listener for add button.
+    $("#addButton").click(function () {
 
-    const newElement = addElement();
-    createNewDivElement(newElement);
-    
-  });
+        const newElement = addElement();
+        createNewDivElement(newElement);
+        
+    });
+
+
+    // Event listener for color selection 
+    $("#favcolor").on("input", function () {
+        selectedColor = $(this).val();
+        $("#colorTarget").css("background-color", selectedColor);
+      });
+
 });
 
 
@@ -39,6 +48,7 @@ function createNewDivElement(element) {
     .addClass("new-div")
     .attr("data-id", element.id)
     .css("border", `${element.borderThickness}px`)
+    .css("background-color", selectedColor)
     .text(`Div ID: ${element.id}`)
     .appendTo("#divContainer");
 
@@ -73,7 +83,7 @@ function updateDivStatus(id, isCtrlPressed) {
         divElement.addClass("border-1");
 
       } else {
-        
+
         element.active = false;
         divElement.removeClass("border-1");
       }
