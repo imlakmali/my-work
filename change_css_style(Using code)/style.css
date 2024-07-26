@@ -8,30 +8,30 @@
     padding: 10px;
     margin: 5px;
     border-style: solid;
-    border-color: #140f44; 
+     
 }
 
 .border-1 {
-    border: 1px solid black;
+    border: 1px solid rgb(214, 24, 24);
     margin: 1px;
 }
 .border-2 {
-    border: 2px solid black;
+    border: 2px solid rgb(12, 162, 125);
     margin: 2px;
 }
 .border-3 {
-    border: 3px solid black;
+    border: 3px solid rgb(84, 196, 43);
     margin: 3px;
 }
 
 
 .border-5 {
-    border: 5px solid black;
+    border: 5px solid rgb(197, 24, 228);
     margin: 5px;
 }
 
 .border-10 {
-    border: 10px solid black;
+    border: 10px solid rgb(18, 178, 199);
     margin: 10px;
     
 }

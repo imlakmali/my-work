@@ -19,7 +19,7 @@ function addNewDiv() {
 
     newDiv.click(function() {
 
-         $(this).toggleClass("border-3");
+         $(this).toggleClass("border-5");
 
         
         });
