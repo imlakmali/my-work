@@ -19,6 +19,12 @@ $(document).ready(function () {
         $(this).css("background-color", selectedColor);
 
     });
+
+  //   Event listener for Add Color 
+    $("#addColorBtn").click(function(){
+      applyColorToDivs()
+    });
+
 });
 
 // Add new element object to elements array
@@ -44,7 +50,6 @@ function createNewDivElement(element) {
         .addClass("new-div")
         .attr("data-id", element.id)
         .css("border", `${element.borderThickness}px`)
-        .css("background-color", selectedColor)
         .text(`Div ID: ${element.id}`)
         .appendTo("#divContainer");
 
@@ -54,6 +59,7 @@ function createNewDivElement(element) {
 
     });
 }
+
 
 // Update the status of a div element
 function updateDivStatus(id, isCtrlPressed) {
@@ -70,14 +76,6 @@ function updateDivStatus(id, isCtrlPressed) {
                 element.active = !element.active;
                 divElement.toggleClass("border-1");
 
-                // Apply selected color if active
-                if (element.active) {
-
-                    divElement.css("background-color", selectedColor);
-
-                } else {
-                    divElement.css("background-color", "#f5f1f1"); 
-                }
             }
         } else {
             // If Ctrl key is not pressed
@@ -85,18 +83,31 @@ function updateDivStatus(id, isCtrlPressed) {
 
                 element.active = true;
                 divElement.addClass("border-1");
-                divElement.css("background-color", selectedColor);
+               
 
             } else {
 
                 element.active = false;
                 divElement.removeClass("border-1");
-                divElement.css("background-color", "#f5f1f1"); 
+                
 
             }
 
         }
 
     });
-    
+
+}
+
+
+//  Apply selected color to div
+function applyColorToDivs(){
+
+  elements.forEach((element)=>{
+
+    if(element.active){
+      
+      $(`div[data-id="${element.id}"]`).css("background-color", selectedColor )
+    }
+  })
 }
